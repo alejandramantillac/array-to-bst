@@ -2,25 +2,21 @@ public class ABB {
     private Node root;
 
     // Construcción del árbol
-    public void buildABB(Node node) {
-        root = node;
+    public void buildABB(String[] array) {
+        root = buildSubTree(array, 0, array.length - 1);
     }
-
-    private Node buildSubTree(Node node, String[] array, int start, int end) {
-        if (start > end) {
+    private Node buildSubTree(String[] array, int left, int right) {
+        if (left > right) {
             return null;
         }
-        int mid = (start + end) / 2;
-        Node newNode = new Node(array[mid]);
-        newNode.setLeft(buildSubTree(newNode, array, start, mid - 1));
-        newNode.setRight(buildSubTree(newNode, array, mid + 1, end));
-        return newNode;
-    }
 
-    public void buildABB(String[] array) {
-        root = buildSubTree(null, array, 0, array.length - 1);
-    }
+        int mid = (left + right) / 2;
+        Node node = new Node(array[mid]);
+        node.setLeft(buildSubTree(array, left, mid - 1));
+        node.setRight(buildSubTree(array, mid + 1, right));
 
+        return node;
+    }
 
     //InOrder
     public void inOrder() {

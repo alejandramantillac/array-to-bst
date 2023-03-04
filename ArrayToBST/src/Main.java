@@ -7,11 +7,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese el arreglo de los Strings (nombres):");
         String names = scanner.nextLine();
-        String[] nodes = names.split(" ");
+        String[] array = names.split(" ");
         ABB tree = new ABB();
 
         // Construcción del árbol
-        tree.buildABB(nodes);
+        tree.buildABB(array);
 
         // InOrder Reverso
         System.out.println("");
